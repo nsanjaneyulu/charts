@@ -1,0 +1,22 @@
+<div>
+    <!-- welcome to dilaog component -->
+    <div class="justify-content-center mt-4 gap-4">
+        <span *ngFor="let image of images" class="mr-2 border" (click)="selectImage(image)">
+            <img [src]="image.src" [ngClass]="{'selected-image': image.selected}" class="img-dialoug">
+        </span>
+        <span class="video-wrap">
+            <video muted autoplay height="96" width="110" class="img-dialoug" src="./../../../../../assets/icons/AIBackground.mp4"></video>
+        </span>
+    </div>
+
+    <!-- <ng-template pTemplate="footer">
+        <p-button label="Run Analysis" class="chat-run-analysis w-full" />
+    </ng-template>
+    <div class="flex justify-content-center">
+    </div>
+    <div class="flex justify-content-center">
+    </div> -->
+    <!-- <div class="flex justify-content-center">
+        <img src="./assets/icons/AIBackground.mp4">
+    </div> -->
+</div>

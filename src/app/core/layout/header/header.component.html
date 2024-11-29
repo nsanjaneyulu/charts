@@ -1,0 +1,49 @@
+<div class="shadow-1 flex-1 md:flex header-panel justify-content-between ">
+  <div class="left-content ">
+    <div class="page-title flex align-items-center">
+      <div class="text-left hidden lg:block xl:block md:block p-3 text-2xl font-medium line-height-2 ">
+        {{pageTitle}}
+      </div>
+
+      <button class="p-link  layout-topbar-button p-3 layout-topbar-menu-button " *ngIf="!isValue && visibility"
+        (click)="toggle()">
+        <i class="pi pi-bars"></i>
+      </button>
+
+    </div>
+  </div>
+  <div class="right-content flex justify-content-between md:align-items-center mr-4">
+    <div class="app-title flex align-items-stretch lg:align-items-center xl:align-items-center ">
+      <!-- <p-button (onClick)="askWithSibyl($event)" class="ask-sybil"></p-button> -->
+      <div class="ask-sybil-container">
+        <p-button (onClick)="askWithSibyl($event)" label="Ask Sibyl AI" icon="pi pi-sparkles"
+          class="ask-sybil"></p-button>
+        <video [autoplay]="true" [muted]="true" [loop]="true" playsinline class="background-video">
+          <source src="../../../../assets/icons/AIBackground.mp4" type="video/mp4">
+        </video>
+      </div>
+
+      <div
+        class="text-left lg:text-right px-3 lg:p-3 xl:p-3 font-semibold text-xs md:text-lg line-height-2  header-title"
+        [style.color]="'#2E3F83' ">
+        <!-- <img src="./../../../../../assets/icons/bell-icon.svg" style="width: 2.5rem;height: 2.5rem;" /> -->
+      </div>
+    </div>
+
+    <div class="profile">
+      <div class="">
+        <div class="flex justify-content-end align-items-center pr-1 pr-2">
+          <p-avatar label='{{UserInitial}}' styleClass="mr-1 mr-2" size="large" shape="circle" />
+          <div
+            class=" align-items-stretch lg:align-items-center xl:align-items-center flex-column justify-content-center pr-2 header-title font-medium  text-sm line-height-2 flex ">
+            {{userName}}
+            <div class="flex w-4 lg:w-auto headerupdate">
+              {{userEmail}}
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

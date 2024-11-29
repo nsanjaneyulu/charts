@@ -1,0 +1,83 @@
+trigger:
+- none
+
+resources:
+- repo: self
+
+variables:
+  branchName: $[replace(variables['Build.SourceBranchName'], 'refs/heads/', '')]
+
+stages:
+- stage: Build
+  displayName: Build and push stage
+  jobs:
+  - job: Build
+    displayName: Build
+    pool:
+      name: sibyl-neu-ado-agentpool-centos
+    steps:
+      - task: SonarSource.sonarqube.15B84CA1-B62F-4A2A-A403-89B77A063157.SonarQubePrepare@5
+        displayName: Prepare analysis on SonarQube
+        inputs:
+          SonarQube: 'sibyl-neu-sonarqube-scon'
+          scannerMode: CLI
+          configMode: manual
+          cliProjectKey: OnePlatform_SocialBrain.UI_AZK4yE8l4WGluD0Qa1VO
+      - task: NodeTool@0
+        inputs:
+          versionSpec: '18.13.0'
+        displayName: 'Install Node.js 18.13.0'
+      - script: |
+          npm install --force
+          npm audit fix
+          if [ "$(branchName)" == "user/pages/poojan" ]; then
+            npm run build:production
+          elif [ "$(branchName)" == "release" ]; then
+            npm run build:uat
+          elif [ "$(branchName)" == "dr" ]; then
+            npm run build:dr
+          elif [ "$(branchName)" == "prod" ]; then
+            npm run build
+          else
+            echo "Branch not recognized for build."
+            exit 1
+          fi
+        displayName: 'npm install and build'
+        workingDirectory: '$(Build.SourcesDirectory)'
+      - powershell: |
+            $params = "$env:SONARQUBE_SCANNER_PARAMS" -replace '"sonar.branch.name":"[\w,/,-]*"\,?'
+             Write-Host "##vso[task.setvariable variable=SONARQUBE_SCANNER_PARAMS]$params"
+        displayName: 'SonarQube-remove-branch-name'
+      - task: SonarSource.sonarqube.6D01813A-9589-4B15-8491-8164AEB38055.SonarQubeAnalyze@5
+        displayName: 'Run Code Analysis'
+        enabled: true
+      - task: SonarSource.sonarqube.291ed61f-1ee4-45d3-b1b0-bf822d9095ef.SonarQubePublish@5
+        displayName: 'Publish Quality Gate Result'
+        enabled: true
+      # - task: CmdLine@2
+      #   displayName: "Run unit tests"
+      #   inputs:
+      #     script: |
+      #       cd AngularWithAzure/
+      #       ng test --browsers=ChromeHeadless --code-coverage --watch=false
+
+      - task: CopyFiles@2
+        inputs:
+          sourceFolder: '$(System.DefaultWorkingDirectory)'
+          contents: '**/*'
+          targetFolder: '$(Build.ArtifactStagingDirectory)'
+          cleanTargetFolder: true
+
+      - task: ArchiveFiles@2
+        inputs:
+          rootFolderOrFile: '$(Build.ArtifactStagingDirectory)/dist/sibyl/'
+          archiveType: 'zip'
+          archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
+          includeRootFolder: false
+          replaceExistingArchive: true
+
+      - task: PublishBuildArtifacts@1
+        inputs:
+          PathtoPublish: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
+          ArtifactName: 'drop'
+          publishLocation: 'Container'

@@ -1,0 +1,155 @@
+.chart-container {
+  display: flex;
+  padding: 20px;
+  max-height: 300px;
+}
+
+.chart-container {
+  display: flex;
+  position: relative;
+  align-items: start;
+  height: 340px !important;
+}
+
+.chart-left {
+  position: absolute;
+  flex: content;
+  margin-right: 20px;
+}
+
+.chart-right {
+  right: 0;
+  width: 50%;
+  position: absolute;
+  flex: content;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  height: 300px;
+}
+
+.chart-right h5 {
+  margin: 0 0 10px 0;
+}
+
+.chart-right .comments-container {
+  flex-grow: 1;
+  overflow-y: auto;
+  margin-bottom: 10px;
+}
+
+.pagination-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.pagination-button-prev-wrapper,
+.pagination-button-next-wrapper {
+  flex: 1;
+}
+
+.pagination-button {
+  width: 100%;
+  padding: 5px 10px;
+}
+
+.pagination-select-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.pagination-total-pages {
+  font-size: 0.9em;
+}
+
+.highlighted {
+  font-weight: bold;
+  color: #ff0000 !important;
+
+}
+
+/* Comment Styling */
+.comment {
+  padding: 10px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+/* Pagination Controls */
+.pagination-controls {
+  position: relative;
+  margin-top: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Previous Button Wrapper - Aligned to Left */
+.pagination-button-prev-wrapper {
+  position: absolute;
+  left: 0;
+}
+
+/* Next Button Wrapper - Aligned to Right */
+.pagination-button-next-wrapper {
+  position: absolute;
+  right: 0;
+}
+
+/* Button and Select Styling */
+.pagination-select,
+.pagination-button {
+  margin-left: 10px;
+  border-radius: 5px;
+  border: 2px solid #e0e0e0;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+/* Button Specific Styles */
+.pagination-button {
+  padding: 7px 15px;
+  background-color: #ffffff;
+}
+
+/* Select Specific Styles */
+.pagination-select {
+  margin-right: 5px;
+  padding: 5px;
+}
+
+/* Disabled Button Styling */
+.pagination-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.highlighted-green {
+  color: green;
+}
+
+.highlighted-orange {
+  color: orange;
+}
+
+.highlighted-red {
+  color: red;
+}
+
+.bubble {
+  width: 50px;
+  /* Example size */
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: border 0.3s ease;
+  /* Smooth transition for border */
+}
+.comment-align {
+  display: flex;
+    justify-content: space-between;
+    padding: 5px;
+}

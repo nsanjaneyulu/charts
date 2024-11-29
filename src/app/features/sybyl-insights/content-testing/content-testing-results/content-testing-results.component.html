@@ -1,0 +1,83 @@
+<div class="cotent-testing-container">
+    <div
+        class="header-wrapper flex align-items-center mb-5 flex-wrap md:flex-nowrap justify-content-center md:justify-normal">
+        <div class="left-content mb-3 md:mb-0">
+            <p-breadcrumb class="max-w-full" [model]="items" />
+        </div>
+        <div class="right-content ml-none md:ml-auto flex align-items-center gap-5">
+            <div class="flex align-items-center gap-2">
+                <p-tag severity="success" value="Organic" class="w-5rem header-tag border-round-3xl" />
+            </div>
+            <div
+                class="flex align-items-center justify-content-center h-3rem gap-2 w-10rem text-center border-round-lg shadow-1 surface-0 p-2 border-1 border-black-alpha-20">
+                <img src="./../../../../assets/icons/instagram.png" alt="Instagram">
+                Instagram
+            </div>
+            <!-- <p-dropdown [options]="socialTypes" [(ngModel)]="selectedSocialType" optionLabel="name"
+                class="dropdown-wrapper">
+                <ng-template let-socialTypes pTemplate="selectedItem">
+                    <div class="flex align-items-center gap-2" *ngIf="selectedSocialType">
+                        <div class="flex align-items-center gap-2">
+                            <img [src]="socialTypes.src" [class]="'flag flag-' + socialTypes.code.toLowerCase()"
+                                style="width: 18px" />
+                            <div>{{ socialTypes?.name }}</div>
+                        </div>
+                    </div>
+                </ng-template>
+                <ng-template let-socialTypes pTemplate="item">
+                    <div class="flex align-items-center gap-2">
+                        <img [src]="socialTypes.src" style="width: 18px" />
+                        <div>{{ socialTypes?.name }}</div>
+                    </div>
+                </ng-template>
+            </p-dropdown> -->
+        </div>
+    </div>
+    <div id="card-content" class="card-wrapper capture-content col-12 p-0 flex gap-5 flex-wrap lg:flex-nowrap">
+        <div class="col-6 p-0 flex-auto" *ngIf="postVersionOne && firstPredictionData">
+            <sibyl-result-post-version (flagSignal)="flagSignalselection($event)" [predictionData]="firstPredictionData"
+                [postVersion]="postVersionOne" [bestfPerforming]="firstBestPerforming"
+                [imgSrc]="'assets/images/post-b.png'" [buttonVisibility]="displayFlag" [postName]="'Post Version A'"
+                [showSchedulePost]="showSchedulePostButton"
+                [isScheduleVisible]="isScheduleVisible"></sibyl-result-post-version>
+        </div>
+        <div class="col-6 p-0 flex-auto" *ngIf="postVerisonTwo && secondPredictionData">
+            <sibyl-result-post-version [postVersion]="postVerisonTwo" [isScheduleVisible]="isScheduleVisible"
+                [predictionData]="secondPredictionData" (flagSignal)="flagSignalselection($event)"
+                [bestfPerforming]="secondBestPerforming" [imgSrc]="'assets/images/post-a.png'"
+                [buttonVisibility]="displayFlag" [postName]="'Post Version B'"></sibyl-result-post-version>
+        </div>
+    </div>
+</div>
+
+<!-- <p-progressSpinner *ngIf="isLoading" strokeWidth="3" styleClass="custom-spinner"></p-progressSpinner> -->
+<div class="overlay" *ngIf="isLoading">
+    <p-progressSpinner strokeWidth="4" styleClass="custom-spinner"></p-progressSpinner>
+</div>
+
+<div class="flex justify-content-center mt-3" *ngIf="postVersionOne && firstPredictionData">
+    <button pButton pRipple label="Save Case Study" [outlined]="true" (click)="saveCaseStudy()"
+        class="mr-4 outlined-button sybilfont col-3"></button>
+    <button pButton pRipple label="Download PDF" (click)="downloadPdf()"
+        class="sybil-button-submit sybilfont col-3"></button>
+</div>
+
+<div>
+    <p-dialog [modal]="true" [(visible)]="visible" [style]="{ width: '680px'}">
+        <span class="p-text-secondary block">
+            <div class="flex justify-content-center">
+                <img src="../../../../../../assets/icons/successSymbol.svg">
+            </div>
+            <h2 class="flex justify-content-center" style="color: #04091E;">Post scheduled successfully</h2>
+            <div class="text-center mb-5"> Your post has been scheduled and is ready to go live at the selected time.
+                Stay tuned for updates and engagement insights.</div>
+            <p-button label="See Scheduled Post" class="connect-business w-full" />
+            <p class="flex justify-content-center">
+                <button class="submit_link" pButton pRipple (click)="onnavigateback()" [outlined]="true"> <i
+                        class="pi pi-angle-left p-2"></i>Continue
+                    Testing
+                </button>
+            </p>
+        </span>
+    </p-dialog>
+</div>

@@ -1,0 +1,107 @@
+::ng-deep {
+    .custom-divider {
+        margin: 10px 0 !important;
+    }
+
+    .p-divider.p-divider-horizontal {
+        margin: 10px 0 !important;
+    }
+
+    .run-analysis {
+        .p-button {
+            background: #F72585;
+            border-color: #F72585;
+        }
+    }
+
+    .connect-business {
+        .p-button {
+            background: #2F6A62;
+            border-color: #2F6A62;
+            width: 100%;
+
+            &:focus {
+                box-shadow: none;
+            }
+        }
+    }
+
+    .dropdown-wrapper {
+
+        .p-inputwrapper,
+        .p-inputtextarea {
+            border: 1px solid #2F334440;
+            border-radius: 8px;
+        }
+    }
+
+    .pdf-card-warpper {
+        height: 100%;
+
+        p-card {
+            height: 100%;
+            display: block;
+
+            .p-card {
+                height: 100%;
+            }
+        }
+    }
+
+    .p-dialog .p-dialog-content {
+        padding: 0 1.5rem 1rem 1.5rem;
+    }
+    .custom-spinner {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 1000;
+        color: #F72585;
+    
+        ::ng-deep {
+            .pi-spinner {
+                color: conic-gradient(to top, #A2D232 -12.15%, #009FDA 21.15%, #002776 71.6%)
+            }
+        }
+    }
+}
+
+.card-header {
+    font-size: 16px;
+    font-weight: 400;
+    color: #04091E;
+}
+
+.submit_link {
+    color: #2F6A62;
+    font-size: 16px;
+    border-color: transparent;
+    font-weight: 600;
+
+    &:focus {
+        border-color: transparent;
+        box-shadow: none;
+    }
+
+    &:hover {
+        background: transparent;
+    }
+
+    &:active {
+        background: transparent;
+    }
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}

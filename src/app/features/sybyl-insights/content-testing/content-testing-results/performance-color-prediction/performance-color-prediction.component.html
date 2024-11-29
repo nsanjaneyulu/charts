@@ -1,0 +1,79 @@
+<div class="mb-3">
+    <label class="input-title">Performance prediction</label>
+    <p-card class="performance-prediction">
+        <div class="grid mt-0">
+            <div *ngFor="let item of performance" class="col py-0">
+                <div class="text-center p-2 inner-card">
+                    <p class="m-0 prediction-value">{{ item.value }}</p>
+                    <p class="m-0 prediction-label">{{ item.label }}</p>
+                </div>
+            </div>
+        </div>
+    </p-card>
+</div>
+
+<div class="color-composition mb-3">
+    <label class="input-title">Color Composition</label>
+    <p-card class=" mb-3">
+        <div>
+            <p class="inner-card-header mb-2">Dominant Color</p>
+            <span class="sybil-info-label mb-2">
+                Based on the analysis, these three colors are the most predominant in your image
+            </span>
+            <div class="">
+                <p-meterGroup [value]="dominantValue" labelPosition="end" >
+                    <ng-template pTemplate="label">
+                        <div class="flex flex-wrap">
+                            <ng-container *ngFor="let meterItem of dominantValue; let index = index">
+                             <div class="flex justify-content-center" [ngStyle]="{'width': meterItem.value + '%'}">{{meterItem.value}}%</div>
+                            </ng-container>
+                        </div>
+                    </ng-template>
+                </p-meterGroup>
+            </div>
+        </div>
+        <!-- <p-card class="performance-prediction mb-3" header="Secondary Color"> -->
+        <p-divider></p-divider>
+        <div>
+            <p class="inner-card-header mb-2">Secondary Color</p>
+            <span class="sybil-info-label mb-2">
+                Based on the analysis, these three colors are the most predominant in your image
+            </span>
+            <div class="">
+                <p-meterGroup [value]="secondaryValue" labelPosition="end" >
+                    <ng-template pTemplate="label">
+                        <div class="flex flex-wrap">
+                            <ng-container *ngFor="let meterItem of secondaryValue; let index = index">
+                             <div class="flex justify-content-center" [ngStyle]="{'width': meterItem.value + '%'}">{{meterItem.value}}%</div>
+                            </ng-container>
+                        </div>
+                    </ng-template>
+                </p-meterGroup>
+            </div>
+        </div>
+    </p-card>
+</div>
+<div>
+    <label class="input-title">Image Composition</label>
+    <p-card class="image-composition mb-3">
+        <div>
+            <p class="sybil-header">Image Performance</p>
+            <span class="sybil-info-label">
+                Certain adjustments and enhancements to the RGB composition of the image could lead to an
+                overall improvement in its visual quality and appeal.
+            </span>
+            <div class="">
+            </div>
+        </div>
+        <p-divider></p-divider>
+        <div>
+            <p class=" sybil-header">What can be improved?</p>
+            <span class="sybil-info-label">
+                Enhancing the image quality through various adjustments and refinements can significantly
+                elevate its visual clarity, sharpness, and overall appeal.
+            </span>
+            <div class="">
+            </div>
+        </div>
+    </p-card>
+</div>

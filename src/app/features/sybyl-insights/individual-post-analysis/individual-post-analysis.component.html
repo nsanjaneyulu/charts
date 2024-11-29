@@ -1,0 +1,120 @@
+<div style="display: flex; justify-content: space-between;">
+    <div style="font-size: 18px; font-weight: bold;">Individual Post Analysis</div>
+    <div>Select Post</div>
+</div>
+<div class="grid mt-5">
+  <div class="col-4">
+    <div><img src="../../../../assets/images/post-b.png" style="width: 300px; height: 300px;" /></div>
+    <app-individual-post-chart></app-individual-post-chart></div>
+  <div class="col-8">
+    <div>
+      <p-tabView>
+        <p-tabPanel header="Positive Comments(30)">
+          <div class="chart-right">
+            <div class="comments-container">
+              <div *ngIf="currentPageComments.length > 0">
+                <div *ngFor="let comment of currentPageComments">
+                  <div class="comment-align">
+                    <div>
+                      <div>{{ comment.commentedBy }}:</div>
+                      <div>{{ comment.comment }}</div>
+                    </div>
+                    <div>
+                      <div>Liked By<br />{{ comment.LikedBy }}</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <p *ngIf="comments.length === 0">
+                Select a sentiment bubble to view comments.
+              </p>
+            </div>
+            <div class="pagination-controls">
+              <div class="pagination-button-prev-wrapper">
+                <button
+                  class="pagination-button pagination-button-prev"
+                  (click)="goToPreviousPage()"
+                  [disabled]="disablePrevious"
+                >
+                  <i class="pi pi-arrow-left"></i>&nbsp;&nbsp; Previous
+                </button>
+              </div>
+
+              <div class="pagination-select-wrapper">
+                <!-- <select (change)="onPageChange($event)"> -->
+                <span (click)="onPageChange($event)">1</span>
+                <!-- </select> -->
+                <span class="pagination-total-pages"
+                  >&nbsp;of&nbsp;{{ totalPages }}</span
+                >
+              </div>
+
+              <div class="pagination-button-next-wrapper">
+                <button
+                  class="pagination-button pagination-button-next"
+                  (click)="goToNextPage()"
+                  [disabled]="disableNext"
+                >
+                  Next &nbsp;&nbsp;<i class="pi pi-arrow-right"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </p-tabPanel>
+        <p-tabPanel header="Negative Comments (40)">
+            <div class="chart-right">
+                <div class="comments-container">
+                  <div *ngIf="currentPageComments.length > 0">
+                    <div *ngFor="let comment of currentPageComments">
+                      <div class="comment-align">
+                        <div>
+                          <div>{{ comment.commentedBy }}:</div>
+                          <div>{{ comment.comment }}</div>
+                        </div>
+                        <div>
+                          <div>Liked By<br />{{ comment.LikedBy }}</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <p *ngIf="comments.length === 0">
+                    Select a sentiment bubble to view comments.
+                  </p>
+                </div>
+                <div class="pagination-controls">
+                  <div class="pagination-button-prev-wrapper">
+                    <button
+                      class="pagination-button pagination-button-prev"
+                      (click)="goToPreviousPage()"
+                      [disabled]="disablePrevious"
+                    >
+                      <i class="pi pi-arrow-left"></i>&nbsp;&nbsp; Previous
+                    </button>
+                  </div>
+    
+                  <div class="pagination-select-wrapper">
+                    <!-- <select (change)="onPageChange($event)"> -->
+                    <span (click)="onPageChange($event)">1</span>
+                    <!-- </select> -->
+                    <span class="pagination-total-pages"
+                      >&nbsp;of&nbsp;{{ totalPages }}</span
+                    >
+                  </div>
+    
+                  <div class="pagination-button-next-wrapper">
+                    <button
+                      class="pagination-button pagination-button-next"
+                      (click)="goToNextPage()"
+                      [disabled]="disableNext"
+                    >
+                      Next &nbsp;&nbsp;<i class="pi pi-arrow-right"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+        </p-tabPanel>
+        
+      </p-tabView>
+    </div>
+  </div>
+</div>

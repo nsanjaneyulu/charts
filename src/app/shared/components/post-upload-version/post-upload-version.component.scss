@@ -1,0 +1,666 @@
+.header-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+
+    .right-content {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+    }
+}
+
+::ng-deep {
+    .p-dropdown {
+        width: 100%;
+        border: 1px solid #E6E6E9;
+        box-shadow: 0 1px 2px 0 rgba(#101828, 0.1);
+    }
+
+    p-calendar {
+        .icon-input--wrapper {
+            position: relative;
+
+            .p-input-icon-right {
+                input {
+                    padding: 0.75rem 0.25rem 0.80rem 2.75rem;
+                }
+            }
+
+            .p-inputtext {
+                padding: 0.75rem 0.25rem 0.80rem 2.75rem;
+            }
+        }
+
+        span {
+            width: 100% !important;
+        }
+
+        calendaricon,
+        .pi-clock {
+            position: absolute;
+            left: 15px;
+            display: block;
+        }
+    }
+
+    .p-card-content {
+        padding: 0 !important;
+    }
+
+    .p-fileupload-files {
+        max-height: 320px;
+        overflow: auto;
+        margin: 10px 0 0;
+
+        // padding: 0 10px 0 0;
+        &::-webkit-scrollbar {
+            width: 4px;
+        }
+
+        &::-webkit-scrollbar-track {
+            box-shadow: inset 0 0 5px #EAF0EF;
+            border-radius: 10px;
+        }
+
+        &::-webkit-scrollbar-thumb {
+            background: #2F6A62;
+            border-radius: 10px;
+        }
+
+        &::-webkit-scrollbar-thumb:hover {
+            background: #2F6A62;
+        }
+
+        p-card {
+            +p-card {
+                margin-top: 10px;
+            }
+        }
+    }
+}
+
+.p-error {
+    font-size: 14px;
+}
+
+.input-title {
+    margin-bottom: 5px;
+    font-size: 14px;
+    font-weight: 500;
+    margin: 0 0 5px;
+    color: #2F3344;
+    display: inline-block;
+}
+
+.p-text-light {
+    font-weight: 400;
+    font-size: 12px;
+    color: #6D707D;
+}
+
+:host {
+    ::ng-deep {
+        .p-chip {
+            border-radius: 8px !important;
+        }
+    }
+}
+
+:host ::ng-deep {
+    .p-chips .p-chips-multiple-container .p-chips-token {
+        margin-right: 0 !important;
+        border-radius: 12px;
+        gap: 0;
+    }
+}
+
+.card-wrapper {
+    display: flex;
+    gap: 20px;
+
+    .card-container {
+        width: 50%;
+
+        .post-wrapper {
+            display: flex;
+            flex-flow: column;
+            margin-bottom: 10px;
+            font-weight: bold;
+
+            .p-element {
+                .p-dropdown {
+                    width: 100%;
+                }
+            }
+        }
+
+        .timezone-wrapper {
+            display: flex;
+            flex-flow: column;
+            margin-bottom: 10px;
+            font-weight: bold;
+
+            .p-element {
+                .p-dropdown {
+                    width: 100%;
+                }
+            }
+        }
+
+        .datetime-wrapper {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 10px;
+            font-weight: bold;
+
+            .schedule-date {
+                display: flex;
+                flex-flow: column;
+                width: 49%;
+
+                .time-desc {
+                    margin-top: 5px;
+                    font-weight: normal;
+                }
+            }
+
+            .schedule-time {
+                display: flex;
+                flex-flow: column;
+                width: 49%;
+
+                .time-desc {
+                    margin-top: 5px;
+                    font-weight: normal;
+                }
+            }
+        }
+
+        .media-wrapper {
+            display: flex;
+            flex-flow: column;
+            margin-bottom: 10px;
+            font-weight: bold;
+
+            .p-element {
+                .p-dropdown {
+                    width: 100%;
+                }
+            }
+        }
+
+        .caption-wrapper {
+            display: flex;
+            flex-flow: column;
+            margin-bottom: 10px;
+            font-weight: bold;
+
+            .p-element {
+                .p-dropdown {
+                    width: 100%;
+                }
+            }
+
+            .caption-desc {
+                margin-top: 5px;
+                font-weight: normal;
+            }
+        }
+
+        .hashtag-wrapper {
+            display: flex;
+            flex-flow: column;
+            margin-bottom: 10px;
+            font-weight: bold;
+
+        }
+
+    }
+}
+
+.drag-area {
+    text-align: center;
+    border: 2px dashed #ccc;
+    padding: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.drag-area.dragging {
+    background-color: #f0f8ff;
+}
+
+.p-card-upload {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.file-info p {
+    margin: 0;
+}
+
+.file-info {
+    i {
+        font-size: 1em;
+        margin-right: 0.7em;
+        background: #C3DDD9;
+        height: fit-content;
+        padding: 10px;
+        border-radius: 50%;
+        border: 5px solid #EAF0EF;
+        color: #333;
+    }
+
+    .image-name {
+        margin-top: 0.7em;
+    }
+}
+
+.file-info small {
+    color: #888;
+}
+
+.p-progressbar {
+    width: 50%;
+    margin-right: 15px;
+}
+
+::ng-deep {
+    .preview-uploaded {
+        .p-card .p-card-body {
+            padding: 1rem !important;
+        }
+
+        .p-card {
+            border-radius: 8px !important;
+        }
+    }
+}
+
+::ng-deep {
+    --clock-hand-color: #F72585 !important;
+
+    .icon-input--wrapper {
+        position: relative;
+
+        .p-input-icon-right {
+            input {
+                padding: 0.75rem 0.25rem 0.75rem 2.75rem;
+            }
+        }
+
+        .p-inputtext {
+            padding: 0.75rem 0.25rem 0.75rem 2.75rem;
+        }
+
+        calendaricon,
+        .pi-clock {
+            position: absolute;
+            left: 15px;
+            display: block;
+        }
+
+        calendaricon {
+            top: 19px;
+            right: 0;
+        }
+
+        .pi-clock {
+            top: 11px;
+        }
+    }
+
+    textarea {
+        // height: 45px !important;
+    }
+
+    // .p-element.p-button-icon-only{
+    //     display: none !important;
+    // }
+    .p-fileupload-buttonbar {
+        padding: 0;
+        background: transparent;
+        border: 0;
+        border-radius: 0;
+    }
+
+    .p-fileupload-content {
+        display: flex;
+        flex-flow: column-reverse;
+    }
+
+    .p-progressbar {
+        display: none;
+    }
+
+    .p-inputswitch.p-inputswitch-checked .p-inputswitch-slider {
+        background: #F72585;
+    }
+
+    .p-fileupload {
+        .disabledd {
+            opacity: 0.2;
+            cursor: not-allowed !important;
+            pointer-events: auto;
+        }
+
+        .p-button.p-button-success.p-button-outlined {
+            background-color: #E6E6E9;
+            color: grey;
+            border: 1px solid transparent;
+            opacity: 0.5;
+
+            &:active {
+                box-shadow: none;
+            }
+        }
+
+        position: relative;
+
+        .p-fileupload-choose {
+            position: absolute;
+            top: 55px;
+            left: 0;
+            right: 0;
+            margin: auto;
+            text-align: center;
+            z-index: 9;
+            font-size: 0;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background-color: transparent;
+            border: 1px solid transparent;
+            color: transparent;
+
+            @media(max-width: 1024px) {
+                top: 65px;
+            }
+
+            .plusicon {
+                display: none;
+            }
+        }
+    }
+
+    .custom-progress {
+        .p-progressbar {
+            // position: relative;
+        }
+    }
+
+    .p-calendar {
+        width: 100%;
+    }
+
+    .sybil-info-label {
+        font-size: 14px;
+        font-weight: 400;
+        color: #6D707D;
+    }
+
+    .sybil-header {
+        font-size: 16px;
+    }
+
+    p-progressspinner {
+        position: absolute;
+        right: 0;
+        left: 0;
+        text-align: center;
+        z-index: 9;
+        top: 45px;
+    }
+
+    .p-progressbar {
+        height: 12px;
+    }
+
+    .p-fileupload-files {
+        // display: none;
+
+        .p-button-icon-only {
+            background: transparent;
+            border-color: transparent;
+            padding: 0;
+            overflow: visible;
+            position: relative;
+
+            &::before {
+                position: absolute;
+                content: "\e93d";
+                font-family: primeicons;
+                font-size: 16px;
+                color: #6D707D;
+            }
+
+            timesicon {
+                svg {
+                    display: none;
+                }
+            }
+        }
+    }
+
+    @media screen and (max-width:1024px) {
+        .p-fileupload-choose {
+
+            transform: translate(-1%, -22%);
+
+            .plusicon {
+                display: none;
+            }
+        }
+    }
+
+    .p-fileupload .p-fileupload-row {
+        margin-top: 15px;
+        display: grid;
+        grid-template-columns: 50px calc(100% - 100px) 50px;
+
+
+        div {
+            &:first-child {
+                grid-row: 1 / 2;
+                width: 50px;
+            }
+
+            &:nth-child(2) {
+                grid-column: 2 / 3;
+                grid-row: 1 / 3;
+                // background-color: blue;
+                width: 100%;
+                margin-left: 10px;
+            }
+
+            &:nth-child(3) {
+                grid-column: 2 / 3;
+                grid-row: 2 / 3;
+                // background-color: yellow;
+                margin-top: -25px;
+                margin-left: 10px;
+            }
+
+            &:nth-child(4) {
+                grid-column: 3 / 3;
+                // background-color: orange;
+            }
+        }
+    }
+
+    .p-fileupload .p-fileupload-row>div {
+        padding: 0;
+    }
+
+    .p-fileupload-row {
+        padding: 15px;
+        border: 1px solid #E6E6E9;
+        border-radius: 8px;
+        align-items: flex-start;
+    }
+
+    .timepicker {
+        width: 360px !important;
+    }
+
+    .timepicker-dial__container {
+        justify-content: center !important;
+    }
+
+    .timepicker-dial__hint {
+        display: none !important;
+    }
+
+    ngx-material-timepicker-dial-control {
+        text-align: center;
+        padding: 0;
+
+        input {
+            color: #2F3344 !important;
+            text-align: center !important;
+            background: #E6E6E9 !important;
+            width: 100px !important;
+            padding: 15px !important;
+            height: 90px;
+            border-radius: 8px !important;
+            text-align: center !important;
+
+            &.timepicker-dial__item_active {
+                background-color: #FEE9F3 !important;
+                color: #F72585 !important;
+            }
+        }
+    }
+
+    .reset {
+        .p-button.p-button-text {
+            color: #F72585;
+
+            font-weight: 500;
+        }
+    }
+
+    .done {
+        .p-button {
+            background: #F72585;
+            border-color: #F72585;
+
+            &:focus {
+                box-shadow: none;
+            }
+        }
+    }
+
+    ngx-material-timepicker-content {
+        border-radius: 8px;
+        overflow: hidden;
+    }
+
+    .timepicker-period {
+        border: 1px solid #E6E6E9;
+        background-color: #ffffff;
+        border-radius: 8px;
+
+        .timepicker-dial__item {
+            padding: 10px !important;
+            color: #6D707D !important;
+
+            &.timepicker-dial__item_active {
+                background-color: #FEE9F3 !important;
+                color: #F72585 !important;
+            }
+        }
+    }
+
+    .clock-face__number>span {
+        width: 58px !important;
+        height: 58px !important;
+        font-size: 18px !important;
+
+        &.active {
+            background: #F72585 !important;
+        }
+    }
+
+    .clock-face__clock-hand {
+        background: #F72585 !important;
+
+        &::after {
+            background: #F72585 !important;
+        }
+    }
+
+    .clock-face__clock-hand_minute {
+        &::before {
+            background: #F72585 !important;
+            border-color: #F72585 !important;
+        }
+    }
+
+    .timepicker__actions {
+        gap: 10px !important;
+        justify-content: center !important;
+        border-top: 1px solid #E2E5ED;
+
+        .timepicker-button {
+            min-width: auto !important;
+            border-radius: 8px !important;
+            border: 1px solid #F72585 !important;
+            background: #F72585 !important;
+            color: #fff !important;
+            height: auto !important;
+            padding: 8px 14px !important;
+            line-height: 20px !important;
+
+            span {
+                text-transform: capitalize !important;
+                padding: 0 !important;
+            }
+        }
+    }
+
+    .timepicker__header {
+        background: #ffffff !important;
+    }
+
+    .timepicker-dial__time {
+        span {
+            color: #2F3344 !important;
+            margin: 0 10px !important;
+        }
+    }
+
+    .timepicker-dial__period {
+        margin-left: 24px !important;
+    }
+}
+
+.file-upload--wrapper {
+    padding: 15px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+
+    .card-file-upload {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .file-upload--wrapper .p-progressbar-value {
+        height: 12px;
+    }
+}
+
+.full-width {
+    width: 100%;
+}
+
+.date-time-picker {
+    display: flex;
+}

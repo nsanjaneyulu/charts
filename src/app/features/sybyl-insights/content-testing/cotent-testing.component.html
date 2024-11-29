@@ -1,0 +1,87 @@
+<ng-container *ngIf="!isScreen">
+    <div class="cotent-testing-container">
+        <div
+            class="header-wrapper flex align-items-center mb-5 flex-wrap md:flex-nowrap justify-content-center md:justify-normal">
+            <div class="left-content mb-3 md:mb-0">
+                <p>Select 2 post for A/B testing</p>
+            </div>
+            <div class="right-content ml-none md:ml-auto flex align-items-center gap-5">
+                <div class="flex align-items-center gap-2">
+                    <span class="line-height-3">
+                        Organic
+                    </span>
+                    <p-inputSwitch [(ngModel)]="checked" (onChange)="onSwitchChange($event)" />
+                    <span class="line-height-3">
+                        Paid
+                    </span>
+                </div>
+                <p-dropdown [options]="socialTypes" [(ngModel)]="selectedSocialType" optionLabel="name"
+                    class="dropdown-wrapper">
+                    <ng-template let-socialTypes pTemplate="selectedItem">
+                        <div class="flex align-items-center gap-2" *ngIf="selectedSocialType">
+                            <div class="flex align-items-center gap-2">
+                                <img [src]="socialTypes.src" [class]="'flag flag-' + socialTypes.code.toLowerCase()"
+                                    style="width: 18px" />
+                                <div>{{ socialTypes?.name }}</div>
+                            </div>
+                        </div>
+                    </ng-template>
+                    <ng-template let-socialTypes pTemplate="item">
+                        <div class="flex align-items-center gap-2">
+                            <img [src]="socialTypes.src" style="width: 18px" />
+                            <div>{{ socialTypes?.name }}</div>
+                        </div>
+                    </ng-template>
+                </p-dropdown>
+            </div>
+        </div>
+        <div class="card-wrapper col-12 p-0 flex gap-5 pdf-card-warpper flex-wrap lg:flex-nowrap">
+            <div class="col-6 p-0 flex-auto">
+                <p-card class="border-none">
+                    <span class="card-header">Post Version A</span>
+                    <p-divider class="custom-divider"></p-divider>
+                    <sibyl-post-upload [postForm]="firstPostForm"></sibyl-post-upload>
+                </p-card>
+            </div>
+
+            <div class=" col-6 p-0 flex-auto">
+                <p-card class=" flex flex-1">
+                    <span class="card-header">Post Version B</span>
+                    <p-divider class="custom-divider"></p-divider>
+                    <sibyl-post-upload [postForm]="secondPostForm"></sibyl-post-upload>
+                </p-card>
+            </div>
+        </div>
+
+        <div class="text-center mt-4">
+            <button pButton pRipple label="Run Analysis" [disabled]="!(firstPostForm.valid && secondPostForm.valid)" class="sybil-button-submit" (click)="runAnalysis()"></button>
+        </div>
+    </div>
+
+    <div>
+        <p-dialog [modal]="true" (onHide)="Hide($event)" [(visible)]="showPopup" [style]="{ width: '45%' }">
+            <span class="p-text-secondary block mb-5">
+                <div class="flex justify-content-center">
+                    <img src="../../../../../../assets/images/paiddialogue.png">
+                </div>
+                <h2 class="flex justify-content-center" style="color: #04091E;">Unlock advance analytics</h2>
+                <div class="text-center justify-content-center dialog-desc mb-5">
+                    You are currently using the organic version. Connect your business account
+                    to unlock premium features and enhance your experience.</div>
+                <p-button label="Connect Business Account" class="connect-business w-full" (click)="createAccount" />
+                <p class="flex justify-content-center">
+                    <button class="submit_link " (click)="Hide($event)" pButton pRipple [outlined]="true">
+                        <i class="pi pi-angle-left p-2"></i>Continue using Organic/free version
+                    </button>
+                </p>
+            </span>
+        </p-dialog>
+    </div>
+    <div class="overlay" *ngIf="isLoading">
+        <p-progressSpinner strokeWidth="4" styleClass="custom-spinner"></p-progressSpinner>
+    </div>
+</ng-container>
+
+<ng-container>
+    <router-outlet></router-outlet>
+</ng-container>

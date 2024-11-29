@@ -1,0 +1,25 @@
+<div class="grid m-0 h-full">
+  <aside class="left-container col-fixed p-0 m-0 z-5 h-full">
+    <app-sidebar></app-sidebar>
+  </aside>
+  <div #rgtcont class="right-container col-8 flex-grow-1 p-0 m-0 h-full">
+    <div class="flex flex-column h-full">
+      <header class="">
+        <app-header></app-header>
+      </header>
+      <main class="flex-1 main-layout pt-2 pl-4 pr-4  lg:pl-7 lg:pr-7 md:pl-4 md:pr-4 pb-4 h-full overflow-y-auto overflow-x-hidden ">
+        <div class="layout-content min-h-full">
+          <router-outlet></router-outlet>
+        </div>
+      </main>
+    </div>
+  </div>
+</div>
+
+<ng-container *ngIf="sidebarVisible2">
+  <p-sidebar [(visible)]="sidebarVisible2" position="right" (onHide)="onclear()">
+    <h2 class="chat-popup-title">Chat with Sibyl AI</h2>
+    <sibyl-chat-with-ai [chatHistory]="chatHistory" [clearFlag]="clearFlag" [chatContent]="chatContent"
+      [isButtonVisible]="false"></sibyl-chat-with-ai>
+  </p-sidebar>
+</ng-container>

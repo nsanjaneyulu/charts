@@ -1,0 +1,178 @@
+<form [formGroup]="postForm">
+    <p-toast position="top-center">
+    </p-toast>
+    <div class="formgrid grid">
+        <div class="post-wrapper field col-12 mb-3">
+            <label class="input-title">Post Type</label>
+            <p-dropdown [options]="mediaType" (onChange)="onMediaTypeChange($event)" formControlName="mediaType"
+                placeholder="Select post type" class="full-width" optionLabel="name"></p-dropdown>
+            <div *ngIf="postForm?.get('mediaType')?.errors?.['required'] && postForm?.get('mediaType')?.touched"
+                class="p-error">
+                Media type is required.
+            </div>
+        </div>
+        <div class="timezone-wrapper field col-12 mb-3">
+            <label class="input-title">Select time zone</label>
+            <p-dropdown [options]="timeZonesWithOffset" formControlName="timeZone" placeholder="Select time zone"
+                class="full-width" optionLabel="name" (onChange)="onTimeZoneSelection($event)">
+            </p-dropdown>
+            <div *ngIf="postForm?.get('timeZone')?.errors?.['required'] && postForm?.get('timeZone')?.touched"
+                class="p-error">
+                Time zone selection is required.
+            </div>
+        </div>
+        <div class="datetime-wrapper flex flex-wrap lg:flex-nowrap">
+            <div class="schedule-date field col-12 lg:col-6 xl:col-6 md:col-6">
+                <label class="input-title">Schedule date</label>
+                <div class="icon-input--wrapper">
+                    <p-calendar [iconDisplay]="'input'" [minDate]="minDate" formControlName="datePicker"
+                        placeholder="Select date" [showIcon]="true" inputId="icondisplay" dateFormat="dd M yy"
+                        class="w-full block" (onSelect)="onDateSelection($event, selectedTimeZone)">
+                    </p-calendar>
+                </div>
+                <div *ngIf="postForm?.get('datePicker')?.errors?.['required'] && postForm?.get('datePicker')?.touched"
+                    class="p-error">
+                    Scheduled date is required.
+                </div>
+                <label class="time-desc sybil-info-label">Choose the date you would like your post to go
+                    live.</label>
+            </div>
+            <div class="schedule-time field col-12 lg:col-6 xl:col-6 md:col-6">
+                <label class="input-title">Schedule time</label>
+
+                <div class="editable-dial-example">
+                    <!-- <input placeholder="Editable dial" aria-label="Editable dial"
+                    [ngxTimepicker]="editableDial" formControlName="timePicker" readonly> -->
+                    <p-iconField iconPosition="left">
+                        <p-inputIcon styleClass="pi pi-clock" />
+                        <input type="text" pInputText pRipple class="p-inputtext-sm w-full text-overflow-ellipsis"
+                            readonly placeholder="Select time" formControlName="timePicker"
+                            [ngxTimepicker]="editableDial" [min]="currentTime" />
+                        <ngx-material-timepicker #editableDial [cancelBtnTmpl]="cancelBtn" [confirmBtnTmpl]="confirmBtn"
+                      ></ngx-material-timepicker>
+                        <ng-template #customHeader>
+                            <div class="custom-header">
+                                <h3>Select Time</h3>
+                            </div>
+                        </ng-template>
+                        <ng-template #cancelBtn>
+                            <!-- <hr> -->
+                            <p-button label="Cancel" class="reset" [text]="true" size="small" [raised]="true"
+                                (onClick)="resetTime(editableDial)" />
+                        </ng-template>
+                        <ng-template #confirmBtn>
+                            <p-button label="Done" class="done" [raised]="true" size="small" />
+                        </ng-template>
+                    </p-iconField>
+                    <div *ngIf="postForm?.get('timePicker')?.errors?.['required'] && postForm?.get('timePicker')?.touched"
+                        class="p-error">
+                        Schedule time is required.
+                    </div>
+
+                    <label class="time-desc sybil-info-label">Choose the time you would like your post to go
+                        live.</label>
+                </div>
+            </div>
+        </div>
+        <div class="media-wrapper field col-12 mb-3">
+            <label class="input-title">Upload Media</label>
+            <div class="p-card border-none">
+                <p-fileUpload name="media" [accept]="fileAccept" [customUpload]="true" [showUploadButton]="false"
+                    [showCancelButton]="false" [multiple]="isCarousel" (onUpload)="onUpload($event)"
+                    [disabled]="isSelectedType" (onSelect)="onFileSelect($event)" (onClear)="onClear()" #fileUpload>
+                    <ng-template pTemplate="content">
+                        <div class="p-d-flex p-flex-column p-ai-center p-jc-center p-p-3 drag-area"
+                            [ngClass]="{ 'dragging': dragover }" (dragover)="onDragOver()" (dragleave)="onDragLeave()"
+                            (drop)="onDrop()">
+                            <button pButton pRipple icon="pi pi-cloud-upload" [rounded]="true" [outlined]="true"
+                                severity="success" [ngClass]="!uploadedFile ? 'disabledd' : ''"
+                                [disabled]="!uploadedFile || uploadedFile.length === 0"></button>
+                            <p class="p-mb-3">
+                                <span><b>Click to upload </b> or drag and drop</span>
+                            </p>
+                            <p class="p-text-light">
+                                MP4, PNG, JPG or GIF (max. 800x400px)
+                            </p>
+                            <p class="p-text-light text-wrap sybil-info-label">
+                                Upload the image or video file for your post. Ensure it complies with the platform's
+                                media guidelines.
+                            </p>
+                        </div>
+                        <div *ngIf="isUploading" class="p-d-flex p-ai-center p-jc-center">
+                            <p-progressSpinner styleClass="custom-spinner" strokeWidth="4" fill="#fff"
+                                animationDuration=".5s" [style]="{width: '70px', height: '70px'}"></p-progressSpinner>
+                        </div>
+                    </ng-template>
+                    <ng-template pTemplate="file" let-file let-fileIndex="index">
+                        <p-card class="preview-uploaded">
+                            <div class=" flex file-preview p-d-flex p-ai-center p-jc-between p-p-2 p-mb-2">
+                                <div class="file-info p-d-flex p-ai-center flex">
+                                    <i class="pi" [ngClass]="getFileIcon(file)" style="font-size: 1.5em;"></i>
+                                    <div class="image-name">
+                                        <p>{{ file.name }}</p>
+                                        <small>{{ formatFileSize(file.size) }}</small>
+                                    </div>
+                                </div>
+
+                                <button pButton icon="pi pi-trash" class="p-button-danger ml-auto"
+                                    (click)="removeFile(fileIndex)"></button>
+                            </div>
+                        </p-card>
+                    </ng-template>
+                </p-fileUpload>
+
+                <!-- <div *ngIf="uploadedFile && !fileError" class="file-upload--wrapper">
+                <div class="card-file-upload">
+                    <div class="file-info p-d-flex p-ai-center">
+                        <i class="pi pi-file-video p-mr-2"></i>
+                        <div>
+                            <p>{{ uploadedFile.name }}</p>
+                            <small>{{ (uploadedFile.size / 1024 / 1024).toFixed(2) }} MB</small>
+                        </div>
+                    </div>
+                    <div class="p-d-flex p-ai-center">
+                        <button pButton icon="pi pi-trash" class="p-button-danger p-ml-2"
+                            (click)="deleteFile()"></button>
+                    </div>
+                </div>
+                <div class="p-d-flex">
+                    <p-progressBar [value]="uploadProgress" [showValue]="true"></p-progressBar>
+                </div>
+            </div> -->
+                <div *ngIf="postForm?.get('fileUpload')?.errors?.['required'] && postForm?.get('fileUpload')?.touched"
+                    class="p-error">
+                    File Upload is required.
+                </div>
+                <div *ngIf="fileError" class="p-error">
+                    {{ fileErrorMessage }}
+                </div>
+            </div>
+        </div>
+        <div class="caption-wrapper field col-12 mb-3">
+            <label class="input-title">Post Caption (Optional)</label>
+            <textarea rows="5" class="w-full" placeholder="Write your caption here..." pInputTextarea
+                formControlName="caption" [autoResize]="true"></textarea>
+            <label class="caption-desc sybil-info-label">Enter the text that will accompany your post. Keep it
+                engaging
+                and
+                relavant to the content.</label>
+            <div class="p-error "
+                *ngIf="postForm?.get('caption')?.errors?.['maxlength'] && postForm?.get('caption')?.touched">
+                Caption cannot exceed 2200 characters.
+            </div>
+        </div>
+        <div class="hashtag-wrapper field col-12">
+            <label class="input-title">Hashtags (Optional)</label>
+            <div class="card p-fluid">
+                <p-chips [(ngModel)]="values" [showClear]="false" [addOnTab]="true" [addOnBlur]="true" separator=" "
+                    [max]="30" removeIcon="pi pi-trash" [caseSensitiveDuplication]="true"
+                    (onAdd)="validateHashtags($event)" (onRemove)="onRemove()" formControlName="hashTag">
+                </p-chips>
+                <div *ngIf="showValidationMessage && !isValidHashtag">
+                    <p class="p-error">Please ensure that all values start with '#'.</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</form>

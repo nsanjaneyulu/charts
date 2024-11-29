@@ -1,0 +1,97 @@
+.p-chips .p-chips-multiple-container .p-chips-token {
+
+    padding: 0.45rem 0.75rem;
+    display: flex;
+    align-items: center;
+
+    .p-chips-token-icon {
+        margin-left: 0px;
+        width: 14px;
+        height: 14px;
+    }
+}
+
+.capture-content {
+    padding: 20px;
+    // border: 1px solid #ccc; /* Optional: for visual clarity */
+}
+
+.page {
+    margin-bottom: 20px;
+    /* Space between pages */
+}
+
+.p-chips-token-label {
+    padding-right: 5px;
+    padding-left: 5px;
+}
+
+.custom-spinner {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+    color: #F72585;
+
+    ::ng-deep {
+        .pi-spinner {
+            color: conic-gradient(to top, #A2D232 -12.15%, #009FDA 21.15%, #002776 71.6%)
+        }
+    }
+}
+
+
+.submit_link {
+    color: #2F6A62;
+    font-size: 16px;
+    border: transparent;
+    font-weight: 600;
+
+    &:focus {
+        border: transparent;
+        box-shadow: none;
+    }
+
+    &:hover {
+        background: transparent;
+    }
+
+    &:active {
+        background: transparent;
+    }
+}
+
+.p-chips-token-label {
+    font-size: 14px;
+}
+
+.p-button-label {
+    font-weight: 500;
+}
+
+.outlined-button {
+    color: #F72585;
+
+    &:hover {
+        background: transparent;
+    }
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.p-dialog {
+    border-radius: 24px;
+    overflow: hidden;
+}

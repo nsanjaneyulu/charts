@@ -1,0 +1,188 @@
+<div class="chat-container card bg-white flex p-4">
+    <div class="chat-history col-3">
+        <div class="flex align-items-center mb-4 justify-content-between chat-list-header">
+            <p class="m-0 rhs-chat-header">
+                Previous chats
+            </p>
+            <div class="new-chat" (click)="newChat()">
+                <i class="pi pi-comment">
+                </i>
+                New chat
+            </div>
+        </div>
+
+        <ng-container *ngIf="!chatHistory.length; else suggestionBlock">
+            <img src="./../../../../assets/icons/chat-history-placholder.png" alt="" height="50%" width="100%">
+        </ng-container>
+        <ng-template #suggestionBlock>
+            <!-- <div class="flex align-item-center justify-content-between btn-caption text-white">
+                <a aria-label="Previous suggestion">Previous suggestion</a>
+                <a aria-label="Suggest a Caption"><i class="pi pi-sparkles"></i> Suggest a Caption</a>
+            </div> -->
+            <div *ngFor="let category of chatHistory" class="chat-card">
+                <p class="font-medium timeline-title">
+                    <span class="bg-white">
+                        {{ category?.category }}
+                    </span>
+                </p>
+                <ul class="p-0 m-0 list-none mb-5">
+                    <li *ngFor="let history of category.chats" class="py-2 text-base user-name-item"
+                        (click)="selectChat(history)" [ngClass]="{'active': selectedChat === history}">
+                        <span>{{ history?.preview }}</span>
+                        <div class="etc-icon">
+                            <i class="pi pi-ellipsis-h"></i>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- <div *ngFor="let category of chatHistory" class="chat-card">
+                <p class="font-medium timeline-title">
+                    <span class="bg-white">
+                        {{ category?.category }}
+                    </span>
+                </p>
+                <ul class="p-0 m-0 list-none mb-5">
+                    <li *ngFor="let history of category.chats" class="py-2 text-base user-name-item"
+                        (click)="selectChat(history)" [ngClass]="{'active': selectedChat === history}">
+                        <span>{{ history?.preview }}</span>
+                        <div class="etc-icon">
+                            <i class="pi pi-ellipsis-h"></i>
+                        </div>
+                    </li>
+                </ul>
+            </div> -->
+
+        </ng-template>
+    </div>
+
+    <div class="chat-content col-9 flex flex-column pl-4">
+        <div class="flex align-items-center justify-content-between">
+            <p class="m-0 rhs-chat-header">
+                Chat with AI
+            </p>
+            <ng-container *ngIf="selectedChatMessages.length">
+                <div class="export-chat" (click)="exportChat()">
+                    <i class="pi pi-download"></i>
+                    Export
+                </div>
+            </ng-container>
+        </div>
+        <p-divider layout="horizontal" />
+        <div *ngIf="!selectedChatMessages.length"
+            class="single-user-chat-content flex flex-column align-item-center justify-content-center text-center gap-3 pt-8 pb-5">
+            <div class="chat-default-image">
+                <img src="../../../../assets/images/Illustration.png" alt="">
+            </div>
+            <span class="empty-placeholder">
+                Start chatting with an AI and gain insights to enhance your posts, including image composition,
+                audio
+                quality, engaging captions, and sentiment metrics, optimizing your content for better audience
+                engagement.
+            </span>
+            <div class="default-prompts flex flex-wrap justify-content-center gap-3">
+                <p *ngFor="let prompt of defaultPrompts"
+                    class="default-para border-round-3xl p-3 flex align-items-center"
+                    (click)="sendMessage($event, prompt?.prompt)" (keydown)="sendMessage($event)">
+                    <span (keydown)="sendMessage($event)">
+                        {{prompt.prompt}}
+                    </span>
+                    <i (keydown)="sendMessage($event)" class="pi pi-arrow-circle-right text-xl"></i>
+                </p>
+            </div>
+        </div>
+        <div class="single-user-chat-content" id="chat-content" #chatContainer *ngIf="selectedChatMessages.length">
+            <div *ngFor="let content of selectedChatMessages" class="test">
+                <div *ngIf="content.sender === 'lhs'" class="left-message mb-4">
+                    <div class="chat-message flex gap-2">
+                        <div class="w-3rem h-3rem border-circle border-1 border-solid flex align-items-center justify-content-center">
+                            <img src="./../../../../assets/icons/chat-icon.png" alt="">
+                        </div>
+                        <div class="w-7 p-3 border-round-xl bg-transparent border-1 left-message-content">
+                            <ng-container *ngIf="!content.typing; else typingIndicator">
+                                <ng-container *ngFor="let segment of content.messageSegments">
+                                    <ng-container *ngIf="segment.type === 'text'">
+                                        <p>{{ segment.content }}</p>
+                                    </ng-container>
+                                    <ng-container *ngIf="segment.type === 'list'">
+                                        <ul>
+                                            <li *ngFor="let item of segment.content">
+                                                {{ item }}
+                                            </li>
+                                        </ul>
+                                    </ng-container>
+                                </ng-container>
+                            
+                                <div *ngIf="content.image" style="padding-top: 4px;">
+                                    <img [src]="content?.image" alt="Uploaded Image" class="uploaded-image">
+                                </div>
+                            </ng-container>
+                        </div>
+                    </div>
+                </div>
+        
+                <ng-template #typingIndicator>
+                    <div class="typing-indicator">
+                        <span></span><span></span><span></span>
+                    </div>
+                </ng-template>
+        
+                <div *ngIf="content.sender === 'rhs'" class="w-7 p-3 border-round-xl chat-message ml-auto surface-200 right-message mb-4">
+                    {{ content.message }}
+                    <div *ngIf="content.image" style="padding-top: 4px;">
+                        <img [src]="content?.image" alt="Uploaded Image" class="uploaded-image">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- <div class="alert-message">
+            <p-messages [(value)]="messages" [enableService]="false" />
+        </div> -->
+        <div class="mt-auto">
+            <div
+                class="chat-input p-inputtextarea p-inputtext p-component p-element w-full ng-valid p-inputtextarea-resizable ng-dirty p-filled">
+                <!-- <input type="text" [(ngModel)]="userMessage" placeholder="Type your message here..." /> -->
+                <!-- <input type="text" [(ngModel)]="userMessage" pInputText placeholder="Write here"
+                    [disabled]="isInputVisbile" class="w-full" /> -->
+
+                <div *ngIf="selectedImage" class="selected-image-preview">
+                    <img [src]="selectedImage?.src" alt="Selected Image" class="preview-image" />
+                    <i class="pi pi-minus-circle remove-icon" (click)="removeImage()"></i>
+                </div>
+
+                <div class="textarea-wrapper">
+                    <textarea class="w-full custom-textarea" [rows]="1" pInputTextarea [autoResize]="true"
+                        placeholder="Write here" [(ngModel)]="userMessage" (keyup.enter)="sendMessage($event)"
+                        [disabled]="isInputVisbile"></textarea>
+                    <div class="send-btn" [ngClass]="isInputVisbile ? 'disabled':  ''" tabindex="0"
+                        (click)="sendMessage($event)" (keydown)="sendMessage($event)">
+                        <i class="pi pi-arrow-circle-right text-xl"></i>
+                    </div>
+                    <div class="img-btn" [ngClass]="isInputVisbile ? 'disabled':  ''" (click)="uploadImage()">
+                        <i class="pi pi-image text-xl"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-3" *ngIf="isButtonVisible">
+                <p-button label="Run Analysis" class="chat-run-analysis w-full" [disabled]="isInputVisbile"
+                    (click)="runAnalysis()" />
+            </div>
+        </div>
+
+        <p-dialog [modal]="true" (onHide)="Hide($event)" [(visible)]="showPopup" [style]="{ width: '45%' }">
+            <div class="justify-content-center mt-4 gap-4">
+                <span *ngFor="let image of images" class="mr-2 border" (click)="selectImage(image)">
+                    <img [src]="image?.src" [ngClass]="{'selected-image': image.selected}" class="img-dialoug">
+                </span>
+                <span class="video-wrap">
+                    <video muted autoplay height="96" width="110" class="img-dialoug"
+                        src="./../../../../../assets/icons/AIBackground.mp4"></video>
+                </span>
+            </div>
+            <ng-template pTemplate="footer">
+                <p-button label="Upload" class="upload-button" [text]="true" severity="primary"
+                    (onClick)="uploadSelectedImage()" />
+            </ng-template>
+        </p-dialog>
+    </div>
+</div>

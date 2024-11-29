@@ -1,0 +1,77 @@
+<div
+  class="layout-left-container h-screen "
+  [ngClass]="isExpanded ? 'max-w-17rem absolute lg:static ':  'hidden'">
+  <div class="sidebar flex p-2 flex-column h-full">
+    <div class="sidebar-header col-12">
+      <div class="grid m-0 h-full">
+        <div
+          class="col-12 p-0 mb-3 flex justify-content-center align-items-center h-2point5rem"
+        >
+        <div class="col-12 p-0 ">
+          <p-image
+          
+          src="../../../../assets/icons/HB_Logo_Black.png"
+          alt="Image"
+          width="100%"
+        ></p-image>
+        </div> 
+             
+        </div>
+         
+      </div>
+    </div>
+  
+      <div class="sidebar-menu col-12 flex-1 p-0 overflow-y-auto overflow-x-hidden">
+       
+
+
+        <div class="card flex justify-content-center">
+          <p-tree [value]="nodes" class="w-full m-0 p-0"  (onNodeUnselect)="nodeUnselect($event)"    
+            selectionMode="single"  (onNodeExpand)="onNodeExpand($event)"
+                (onNodeSelect)="onNodeSelect($event)"   [filter]="true" 
+          filterPlaceholder="Search" >
+              <ng-template let-node pTemplate="url">
+                  <a routerLink="{{node.data}}" (click)="clicktheRoute()" routerLinkActive="activeLink "  [routerLinkActiveOptions]="{ exact:false }"  style="color: #6b7280;"   class="font-medium   hover:text-primary no-underline" >
+                     {{ node.label }}
+            
+                  </a>
+              </ng-template>
+              <ng-template let-node pTemplate="default" >
+                <div class="flex align-items-center">
+                  <i class=" sybil-icon sybil-icon-20 " [ngClass]="getIconClass(node)"></i> 
+                  <a class="font-medium p-2" [ngClass]="{'parent-with-children': node.children?.length, 'parent-without-children': !node.children?.length}" >
+                       {{ node.label }}
+                </a>
+                </div>
+               
+              
+            </ng-template>
+            <ng-template #toggleicon pTemplate="togglericon"  let-open>
+                <span *ngIf="open"  class="pi pi-angle-up"></span>
+                <span *ngIf="!open" class="pi pi-angle-down"></span>
+              </ng-template> 
+          </p-tree>
+      </div>
+      </div>
+ 
+      
+ 
+    <div
+      class="sidebar-footer col-12 flex justify-content-center align-items-center"
+      [style.height]="'15%'"
+    >
+      <div class="footer-content w-10">
+
+        <div
+          class="content flex justify-content-center py-3 text-sm md:text-base font-bold flex-wrap"
+        >
+        <div style="color: #6D707D;font-size: 16px;">
+          Powered By
+        </div>
+    
+        <img src="../../../../assets/icons/footer-icon.svg" width="100%"/>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

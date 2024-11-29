@@ -1,0 +1,197 @@
+.layout-left-container {
+    background-color: white;
+    transition: all .5s;
+    border-right: 1px solid #E6E6E9;
+  
+    .sidebar {
+      transition: all .5s;
+  
+      .sidebar-header {
+        .sidebar-pin {
+          transition: all .5s;
+          cursor: pointer;
+          
+          i {
+            background-color: #197CBA;
+            color: white;
+          }
+        }
+      }
+  
+      .sidebar-menu {
+        transition: all .5s;
+  .p-tree
+  {
+    padding: 2px !important;
+    border: transparent;
+  }
+        .esa-menu {
+          transition: all 1s;
+  
+          .esa-menu-link {
+            transition: all .2s;
+  
+            &>* {
+              cursor: pointer;
+              transition: all .5s;
+            }
+  
+            label.esa-menu-text {
+              transition: display 1s;
+              cursor: pointer;
+            }
+  
+            &.active-link {
+              background: #5BC500 !important;
+  
+              label.esa-menu-text {
+                color: #002776 !important;
+              }
+            }
+  
+            &:not(.active-link):hover {
+              background: #197cba !important;
+  
+              .grid label.esa-menu-text {
+                color: white !important;
+              }
+            }
+          }
+        }
+
+        .active{
+          background-color: #002776;
+         }
+      }
+  
+      .sidebar-footer {
+        .footer-content {
+          color: #b2d3e8;
+   
+          
+        }
+      }
+
+      .activeLink{
+        border-left: 1px solid  #2F6A62; 
+        color: #2F6A62!important;
+        font-weight: 600 !important;
+       }
+    }
+  }
+
+ 
+ .p-treenode-content{
+  justify-content: space-between;
+  flex-direction: row-reverse;
+  }
+  
+ .p-tree .p-tree-filter-container .p-tree-filter
+ {
+  content: none;
+  padding: 10px;
+ }
+ 
+
+.p-treenode[aria-expanded="true"][aria-setsize]:not([aria-setsize="0"])
+{
+  .p-treenode-content 
+  {
+    background: #2F6A62;
+   border-radius: 5px;
+ 
+    .p-tree-toggler
+    {
+      color: white;
+    }
+   .p-treenode-label
+    {
+    span a{
+
+      color: white ;
+    }
+   
+    }
+  }
+}
+
+
+.p-treenode[aria-expanded="false"]
+{
+  .p-treenode-content 
+  {
+    background: transparent;
+   border-radius: 5px;
+ 
+   &.p-highlight {
+
+       background: transparent;
+       .p-tree-toggler
+       {
+        color: #6b7280!important;
+       }
+      .p-treenode-label
+        {
+         span a{
+            color: #6b7280!important;
+        
+         
+          }
+         
+           }
+      }
+   
+    }
+  }
+
+ .active{
+  background-color: #002776;
+ }
+
+ .p-tree-container
+ {
+overflow-y: hidden;
+ }
+.p-treenode-children
+{
+  .p-element
+  {
+    padding-left: 0px;
+  .p-treenode{
+      border-left:  1px solid #E6E6E9;
+      padding: 5px 0px;
+     
+      .p-treenode-content{
+        border-radius: 0px;
+        background-color: transparent;
+        padding-left: 0px;
+        flex-direction: row;
+        background: transparent !important;
+        cursor:context-menu;
+       
+        .activeLink{
+          border-left: 1px solid  #2F6A62; 
+          color: #2F6A62!important;
+          font-weight: 600 !important;
+         }
+        .p-treenode-label
+        {
+        span a{
+    cursor: pointer;
+         
+          padding: 0.75rem;
+        }
+       
+        }
+
+        button{
+          display: none;
+        }
+      }
+     
+    }
+
+  }
+}
+
+

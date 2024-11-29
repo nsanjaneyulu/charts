@@ -1,0 +1,57 @@
+@font-face {
+  font-family: "DMSans-Bold";
+  src: url("./static/DMSans-Bold.ttf") format("TrueType");
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@font-face {
+  font-family: "DMSans";
+  src: url("./static/DMSans-Light.ttf") format("TrueType");
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@font-face {
+  font-family: "DMSans-medium";
+  src: url("./static/DMSans-Medium.ttf") format("TrueType");
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+$regularFont: "DMSans", sans-serif;
+$boldFont: "DMSans-Bold", sans-serif;
+$lightFont: "DMSans-medium", sans-serif;
+
+.regularFont {
+  font-family: $regularFont, sans-serif;
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.boldFont {
+  font-family: $boldFont, sans-serif;
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.lightFont {
+  font-family: $lightFont, sans-serif;
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@import "../scss/theme.scss";
+

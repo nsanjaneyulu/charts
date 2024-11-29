@@ -1,0 +1,68 @@
+.inner-card {
+    background-color: #E6E6E9;
+    border-radius: 4px;
+}
+
+::ng-deep {
+    .performance-prediction {
+        .p-card .p-card-body {
+            padding: 15px;
+        }
+        .p-card-content{
+            padding: 0;
+        }
+    }
+}
+
+.prediction-value {
+    font-size: 14px;
+    font-weight: 500;
+    color: #344054;
+}
+
+.prediction-label {
+    font-size: 12px;
+    font-weight: 500;
+    color: #2F3344;
+}
+
+.input-title {
+    font-size: 14px;
+    font-weight: 500;
+    margin: 0 0 9px;
+    color: #2F3344;
+    display: inline-block;
+}
+
+.color-composition,
+.image-composition {
+    ::ng-deep {
+        .p-card .p-card-body {
+            padding-top: 0;
+            padding-bottom: 0;
+        }
+    }
+}
+
+::ng-deep {
+    .p-metergroup-meters {
+        height: 20px;
+    }
+
+    .p-metergroup .p-metergroup-labels.p-metergroup-labels-horizontal {
+        gap: 5rem;
+    }
+}
+
+.inner-card-header {
+    font-size: 16px;
+    font-weight: 400;
+    color: #04091E;
+    padding-top: 0 !important;
+}
+
+.sybil-header {
+    font-size: 16px;
+    color: #04091E;
+    font-weight: 400;
+}

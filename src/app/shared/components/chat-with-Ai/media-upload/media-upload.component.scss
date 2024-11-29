@@ -1,0 +1,59 @@
+span {
+    cursor: pointer;
+}
+
+.selected-image {
+    border: 1px solid #F72585;
+    border-radius: 4px;
+    transition: all 0.1 ease-in-out;
+}
+
+.img-dialoug {
+    transition: all .25s;
+    border-radius: 7px;
+    width: 131px !important;
+    &:hover {
+        transform: scale(1.08);
+        box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    }
+}
+
+.video-wrap {
+    .img-dialoug {
+        object-fit: cover;
+        border-radius: 7px;
+    }
+}
+
+::ng-deep {
+    .p-element {
+        background-color: #fff;
+
+        .ng-star-inserted {
+            .mt-4 {
+                margin: 0 !important;
+            }
+
+            .p-dialog-content {
+                background: #fbfbfb;
+                margin: 0 20px;
+                border: 1.5px dashed #80808036;
+                border-radius: 11px;
+                padding: 20px 20px !important;
+                overflow: auto;
+            }
+        }
+    }
+
+    .p-dialog-title {
+        margin-left: 12px;
+    }
+
+    .p-dialog-footer {
+        padding: 10px;
+
+        .mt-3 {
+            margin: 0 !important;
+        }
+    }
+}

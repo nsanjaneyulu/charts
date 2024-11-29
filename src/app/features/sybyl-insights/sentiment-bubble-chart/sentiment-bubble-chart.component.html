@@ -1,0 +1,87 @@
+<p-card header="Sentiment Bubble Chart">
+  <div>Lorium Ipsum Sample Test Lorium Ipsum Sample Test</div>
+  <div class="m-0">
+    <div class="chart-container">
+      <div class="chart-left">
+        <p-chart
+          type="bubble"
+          [data]="bubbleChartData"
+          [options]="bubbleChartOptions"
+        ></p-chart>
+      </div>
+      <div class="chart-right">
+        <h5>
+          Comment with word
+          <span
+            [ngClass]="{
+              'highlighted-green': selectedSentimentType === 'positive',
+              'highlighted-orange': selectedSentimentType === 'neutral',
+              'highlighted-red': selectedSentimentType === 'negative'
+            }"
+          >
+            {{ selectedWord }}
+          </span>
+          in it
+        </h5>
+
+        <div class="comments-container">
+          <div *ngIf="currentPageComments.length > 0">
+            <div *ngFor="let comment of currentPageComments">
+              <div class="comment-align">
+                <div>
+                  <div>{{ comment.commentedBy }}:</div>
+                  <div
+                    [innerHTML]="
+                      highlightWord(
+                        comment.comment,
+                        selectedWord,
+                        comment.sentimentType
+                      )
+                    "
+                  ></div>
+                </div>
+                <div>
+                  <div>Liked By<br />{{ comment.LikedBy }}</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <p *ngIf="comments.length === 0">
+            Select a sentiment bubble to view comments.
+          </p>
+        </div>
+
+        <div class="pagination-controls">
+          <div class="pagination-button-prev-wrapper">
+            <button
+              class="pagination-button pagination-button-prev"
+              (click)="goToPreviousPage()"
+              [disabled]="disablePrevious"
+            >
+              <i class="pi pi-arrow-left"></i>&nbsp;&nbsp; Previous
+            </button>
+          </div>
+
+          <div class="pagination-select-wrapper">
+            <!-- <select (change)="onPageChange($event)"> -->
+            <span (click)="onPageChange($event)">1</span>
+            <!-- </select> -->
+            <span class="pagination-total-pages"
+              >&nbsp;of&nbsp;{{ totalPages }}</span
+            >
+          </div>
+
+          <div class="pagination-button-next-wrapper">
+            <button
+              class="pagination-button pagination-button-next"
+              (click)="goToNextPage()"
+              [disabled]="disableNext"
+            >
+              Next &nbsp;&nbsp;<i class="pi pi-arrow-right"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</p-card>

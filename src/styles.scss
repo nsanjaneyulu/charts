@@ -1,0 +1,29 @@
+/* You can add global styles to this file, and also import other style files */
+/* You can add global styles to this file, and also import other style files */
+
+html,
+body,
+.app-root {
+  display: block;
+  //position: relative;
+  width: 100%!important;
+  height: 100% !important;
+  padding: 0;
+  margin: 0;
+  left: 0;
+  top: 0;
+  overflow-y: hidden;
+  overflow-x: auto
+}
+
+@import "assets/styles/fonts/theme-default.scss";
+@import "primeicons/primeicons.css";
+.p-card-title {
+  font-size: 16px !important;
+}
+.p-card-content > div {
+  font-size: 12px !important;
+}
+.p-card .p-card-content {
+  padding: 0px !important;
+}

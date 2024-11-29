@@ -1,0 +1,157 @@
+<div class="card-container pdf-card-wrapper flex-auto">
+    <p-card>
+        <div class="flex justify-content-between h-2rem">
+            <div class="flex align-items-center">
+                {{postName}}
+            </div>
+            <div *ngIf="bestfPerforming" class="flex align-items-center">
+                <p-tag [style]="{ background:'#ECFDF3' , border:'1px solid #6CE9A6' , color: '#039855'  }"
+                    severity="success" class="w-full border-round-3xl">Best Performing</p-tag>
+            </div>
+        </div>
+        <p-divider></p-divider>
+        <div class="post-image field">
+            <img [src]="'data:image/jpg;base64,' + postVersion?.media[0]?.base64String" height="100%" width="100%">
+            <i class="pi pi-image"></i>
+            <!-- <swiper-container #swiperContainer navigation="true">
+                <swiper-slide>
+                    <img *ngIf="postVersion?.media?.length"
+                        [src]="'data:image/jpg;base64,' + postVersion?.media[0]?.base64String" height="100%" width="100%"/>
+                </swiper-slide>
+                <swiper-slide>
+                    <img [src]="imgSrc" height="100%" width="100%">
+                </swiper-slide>
+            </swiper-container> -->
+            <!-- <i class="pi pi-images"></i>
+            <i class="pi pi-video"></i> -->
+
+            <!-- <swiper-container #swiperContainer navigation="true">
+                <swiper-slide *ngIf="postVersion?.media?.length">
+                    <ng-container *ngIf="false; else videoTemplate">
+                        <img [src]="'data:image/jpg;base64,' + postVersion?.media[0]?.base64String" height="100%"
+                            width="100%" />
+                    </ng-container>
+                    <ng-template #videoTemplate>
+                        <i class="pi pi-image"></i>
+                        <img [src]="imgSrc" height="100%" width="100%">
+                    </ng-template>
+                </swiper-slide>
+                <swiper-slide>
+                    <video src="./assets/icons/AIBackground.mp4" [autoplay]="true" [muted]="true" [loop]="true"
+                        playsinline height="100%" width="100%"></video>
+                </swiper-slide>
+            </swiper-container> -->
+        </div>
+
+        <div class="post-image-caption mt-2 field">
+            <p class="mb-1">Caption</p>
+            <div class="border-1 border-200 border-round mb-3 overflow-hidden"
+                [ngClass]="{'loading-background': isLoadingCaption}">
+                <ng-container *ngIf="!isLoadingCaption; else loadingBlock">
+                    <p class="p-3 m-0 sybil-info-label caption">
+                        {{ postVersion?.postCaption }}
+                    </p>
+                </ng-container>
+
+                <!-- <ng-template #loadingBlock>
+                    <p class="p-3 m-0 sybil-info-label text-muted text-center justify-content-center">Please Wait...</p>
+                </ng-template> -->
+                <ng-template #loadingBlock>
+                    <p class="typing-indicator text-center justify-content-center">
+                        <span></span><span></span><span></span>
+                    </p>
+                </ng-template>
+
+                <ng-container *ngIf="!SuggestaCaption; else suggestionBlock">
+                    <button pButton pRipple label="Suggest a Caption" (click)="nextSuggestions()"
+                        class="btn-caption pi pi-sparkles w-full" aria-label="Suggest a Caption"
+                        [disabled]="isLoadingCaption"></button>
+                </ng-container>
+
+                <ng-template #suggestionBlock>
+                    <div class="flex align-item-center justify-content-between btn-caption text-white">
+                        <a aria-label="Previous suggestion" style="cursor: pointer;" (click)="previousSuggestions()"
+                            [class.disabled]="isLoadingCaption">
+                            Previous Suggestion
+                        </a>
+                        <a aria-label="Suggest a Caption" style="cursor: pointer;" (click)="nextSuggestions()"
+                            [class.disabled]="isLoadingCaption">
+                            <i class="pi pi-sparkles"></i> Suggest a Caption
+                        </a>
+                    </div>
+                </ng-template>
+            </div>
+        </div>
+        <sibyl-performance-prediction [predictionData]="predictionData"></sibyl-performance-prediction>
+
+        <form [formGroup]="postForm">
+            <div class="formgrid">
+                <!-- Hashtags -->
+                <div class="hashtag-wrapper mt-2 field">
+                    <label class="input-title">Hashtags (Optional)</label>
+                    <div class="card p-fluid sybil-info-label sybil-hashtag-label">
+                        <p-chips [(ngModel)]="values" [disabled]="!buttonVisibility" class="chips-container"
+                            [addOnTab]="true" [addOnBlur]="true" separator=" " [max]="30" removeIcon="pi pi-trash"
+                            [caseSensitiveDuplication]="true" (onAdd)="validateHashtags($event)" (onRemove)="onRemove()"
+                            formControlName="hashTag">
+                        </p-chips>
+                        <div *ngIf="showValidationMessage && !isValidHashtag">
+                            <p class="p-error">Please ensure that all values start with '#'.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="datetime-wrapper field flex flex-wrap lg:flex-nowrap grid mb-0">
+                    <div class="schedule-date field col-6">
+                        <label class="input-title">Proposed schedule date</label>
+                        <div class="icon-input--wrapper">
+                            <p-calendar [iconDisplay]="'input'" [minDate]="minDate" formControlName="datePicker" placeholder="Select date"
+                                [showIcon]="true" inputId="icondisplay" dateFormat="dd M yy" class="w-full block" (onSelect)="onDateSelection($event, selectedTimeZone)"/>
+                        </div>
+                        <div *ngIf="postForm?.get('datePicker')?.errors?.['required'] && postForm?.get('datePicker')?.touched"
+                            class="p-error">
+                            Proposed schedule date is required.
+                        </div>
+                    </div>
+
+                    <div class="schedule-time field col-6">
+                        <label class="input-title">Proposed schedule time</label>
+                        <div class="editable-dial-example">
+                            <div class="icon-input--wrapper">
+                                <p-iconField iconPosition="left">
+                                    <p-inputIcon styleClass="pi pi-clock"></p-inputIcon>
+                                    <input type="text" pInputText pRipple
+                                        class="p-inputtext-sm w-full text-overflow-ellipsis" readonly
+                                        placeholder="Select time" formControlName="timePickers"
+                                        [ngxTimepicker]="editableDial" [min]="currentTime"/>
+                                    <ngx-material-timepicker #editableDial></ngx-material-timepicker>
+                                </p-iconField>
+                            </div>
+                            <div *ngIf="postForm?.get('timePickers')?.errors?.['required'] && postForm?.get('timePickers')?.touched"
+                                class="p-error">
+                                Proposed schedule time is required.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Timezone -->
+                <div class="timezone-wrapper field mb-3">
+                    <label class="input-title">Time Zone</label>
+                    <p-dropdown [options]="timeZonesWithOffset" formControlName="timeZone"
+                        placeholder="Select time zone" class="full-width" optionLabel="name">
+                    </p-dropdown>
+                    <div *ngIf="postForm?.get('timeZone')?.errors?.['required'] && postForm?.get('timeZone')?.touched"
+                        class="p-error">
+                        Time Zone is required.
+                    </div>
+                </div>
+
+                <div class="justify-content-center field mt-3 mb-0" id="schedule-button" *ngIf="isScheduleVisible">
+                    <button pButton pRipple label="Schedule Post" (click)="ScheduledPosts()"
+                        class="sybil-button-submit sybilfont w-full"></button>
+                </div>
+            </div>
+        </form>
+    </p-card>
+</div>

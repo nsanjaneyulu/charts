@@ -1,0 +1,9 @@
+<p-toast position="top-center">
+    <ng-template let-msg pTemplate="msg" class="justify-content-center">
+        <span [innerHTML]="msg.detail"></span>
+    </ng-template>
+</p-toast>
+<app-authenticated-layout></app-authenticated-layout>
+<div *ngIf="spinner">
+    
+</div>

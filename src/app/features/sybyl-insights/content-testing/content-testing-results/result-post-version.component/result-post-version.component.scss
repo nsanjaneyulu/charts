@@ -1,0 +1,805 @@
+.input-title {
+    font-size: 14px;
+    font-weight: 500;
+    margin: 0 0 9px;
+    color: #2F3344;
+    display: inline-block;
+}
+
+.inner-card-header {
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.p-tag.p-tag-success {
+    color: #039855;
+    border: 1px solid #6CE9A6;
+    background: #ECFDF3;
+}
+
+.performance-prediction {
+    ::ng-deep {
+        .p-card .p-card-body {
+            // padding-top: 0;
+            // padding-bottom: 0;
+        }
+    }
+}
+
+.p-dialog-header-icons {
+    .p-dialog-header-icon {
+        border: 50%;
+        background-color: #E6E6E9;
+
+        .p-element {
+            color: #2F3344;
+        }
+    }
+}
+
+
+.p-chips .p-chips-multiple-container .p-chips-token {
+    border-radius: 10px;
+    margin-right: 0;
+}
+
+
+.header-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+
+    .right-content {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+    }
+}
+
+.p-dropdown {
+    width: 100%;
+    border: 1px solid #E6E6E9;
+    box-shadow: 0 1px 2px 0 rgba(#101828, 0.1);
+}
+
+p-calendar {
+    span {
+        width: 100% !important;
+    }
+}
+
+::ng-deep .p-card-content {
+    padding-top: 0 !important;
+}
+
+// audio::-webkit-media-controls-timeline,
+// video::-webkit-media-controls-timeline {
+//     display: none;
+// }
+
+// audio::-webkit-media-controls,
+// video::-webkit-media-controls {
+//     display: none;
+// }
+
+// ::ng-deep {
+// .swiper-wrapper {
+//     .swiper-button-next {
+//         height: 20px;
+//         width: 20px;
+//         color: #F72585;
+//     }
+// }
+
+// .swiper {
+//     background: #f5f5f5;
+
+//     .swiper-button-prev {
+//         width: 50px;
+//         height: 50px;
+//         background: #fe3331;
+//     }
+// }
+
+.sybil-info-label {
+    max-height: 110px;
+    height: 110px;
+    overflow: auto;
+    margin: 10px 0 0 !important;
+
+    &.sybil-hashtag-label {
+        border: 1px solid #EAF0EF !important;
+        border-radius: 10px;
+
+        ::ng-deep {
+            ul {
+                gap: 4px !important;
+
+                li {
+                    border-radius: 8px;
+                    margin: 0;
+                }
+            }
+        }
+    }
+
+    &::-webkit-scrollbar {
+        width: 4px;
+    }
+
+    &::-webkit-scrollbar-track {
+        box-shadow: inset 0 0 5px #EAF0EF;
+        border-radius: 10px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background: #2F6A62;
+        border-radius: 10px;
+    }
+
+    &::-webkit-scrollbar-thumb:hover {
+        background: #2F6A62;
+    }
+}
+
+// }
+
+.input-title {
+    margin-bottom: 5px;
+    font-size: 14px;
+    font-weight: 500;
+    margin: 0 0 5px;
+    color: #2F3344;
+    display: inline-block;
+}
+
+.p-chip {
+    border-radius: 8px !important;
+}
+
+::ng-deep .p-chips .p-chips-multiple-container {
+    // gap: 0 !important;
+
+    .p-chips-token {
+        // margin-right: 0 !important;
+        border-radius: 8px;
+    }
+}
+
+swiper-container {
+    height: 100%;
+    // position: absolute;
+}
+
+.card-wrapper {
+    display: flex;
+    gap: 20px;
+
+    .card-container {
+        width: 50%;
+
+        .post-wrapper {
+            display: flex;
+            flex-flow: column;
+            margin-bottom: 10px;
+            font-weight: bold;
+
+            .p-element {
+                .p-dropdown {
+                    width: 100%;
+                }
+            }
+        }
+
+        .timezone-wrapper {
+            display: flex;
+            flex-flow: column;
+            margin-bottom: 10px;
+            font-weight: bold;
+
+            .p-element {
+                .p-dropdown {
+                    width: 100%;
+                }
+            }
+        }
+
+        .datetime-wrapper {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 10px;
+            font-weight: bold;
+
+            .schedule-date {
+                display: flex;
+                flex-flow: column;
+                width: 49%;
+
+                .time-desc {
+                    margin-top: 5px;
+                    font-weight: normal;
+                }
+            }
+
+            .schedule-time {
+                display: flex;
+                flex-flow: column;
+                width: 49%;
+
+                .time-desc {
+                    margin-top: 5px;
+                    font-weight: normal;
+                }
+            }
+        }
+
+        .media-wrapper {
+            display: flex;
+            flex-flow: column;
+            margin-bottom: 10px;
+            font-weight: bold;
+
+            .p-element {
+                .p-dropdown {
+                    width: 100%;
+                }
+            }
+        }
+
+        .caption-wrapper {
+            display: flex;
+            flex-flow: column;
+            margin-bottom: 10px;
+            font-weight: bold;
+
+            .p-element {
+                .p-dropdown {
+                    width: 100%;
+                }
+            }
+
+            .caption-desc {
+                margin-top: 5px;
+                font-weight: normal;
+            }
+        }
+
+        .hashtag-wrapper {
+            display: flex;
+            flex-flow: column;
+            margin-bottom: 10px;
+            font-weight: bold;
+
+        }
+
+    }
+}
+
+.drag-area {
+    text-align: center;
+    border: 2px dashed #ccc;
+    padding: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.drag-area.dragging {
+    background-color: #f0f8ff;
+}
+
+.p-card-upload {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.file-info p {
+    margin: 0;
+}
+
+.file-info small {
+    color: #888;
+}
+
+.p-progressbar {
+    width: 50%;
+    margin-right: 15px;
+}
+
+::ng-deep {
+    --clock-hand-color: #F72585 !important;
+
+    .icon-input--wrapper {
+        position: relative;
+
+        // .p-input-icon-right {
+        input {
+            padding: 0.75rem 0.25rem 0.75rem 2.75rem;
+        }
+
+        // }
+
+        .p-inputtext {
+            padding: 0.75rem 0.25rem 0.75rem 2.75rem;
+        }
+
+        calendaricon,
+        .pi-clock {
+            position: absolute;
+            left: 15px;
+            display: block;
+        }
+
+        calendaricon {
+            top: 20px;
+            right: 0;
+        }
+
+        .pi-clock {
+            top: 11px;
+        }
+    }
+
+    // .p-element.p-button-icon-only{
+    //     display: none !important;
+    // }
+    .p-fileupload-buttonbar {
+        padding: 0;
+        background: transparent;
+        border: 0;
+        border-radius: 0;
+    }
+
+    .p-fileupload-content {
+        display: flex;
+        flex-flow: column-reverse;
+    }
+
+    .p-progressbar {
+        display: none;
+    }
+
+    .p-inputswitch.p-inputswitch-checked .p-inputswitch-slider {
+        background: #F72585;
+    }
+
+    .p-fileupload {
+        position: relative;
+
+        .p-fileupload-choose {
+            position: absolute;
+            top: 50px;
+            left: 0;
+            right: 0;
+            margin: auto;
+            text-align: center;
+            z-index: 9;
+            font-size: 0;
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            background-color: transparent;
+            border: 1px solid #689f38;
+
+            .plusicon {
+                display: none;
+            }
+        }
+    }
+
+    .custom-progress {
+        .p-progressbar {
+            // position: relative;
+        }
+    }
+
+    p-progressspinner {
+        position: absolute;
+        right: 0;
+        left: 0;
+        text-align: center;
+        z-index: 9;
+        top: 45px;
+    }
+
+    .p-progressbar {
+        height: 12px;
+    }
+
+    .p-fileupload-files {
+        // display: none;
+
+        .p-button-icon-only {
+            background: transparent;
+            border-color: transparent;
+            padding: 0;
+            overflow: visible;
+            position: relative;
+
+            &::before {
+                position: absolute;
+                content: "\e93d";
+                font-family: primeicons;
+                font-size: 16px;
+                color: #6D707D;
+            }
+
+            timesicon {
+                svg {
+                    display: none;
+                }
+            }
+        }
+    }
+
+    .p-fileupload .p-fileupload-row {
+        margin-top: 15px;
+        display: grid;
+        grid-template-columns: 50px calc(100% - 100px) 50px;
+
+
+        div {
+            &:first-child {
+                grid-row: 1 / 2;
+                width: 50px;
+            }
+
+            &:nth-child(2) {
+                grid-column: 2 / 3;
+                grid-row: 1 / 3;
+                // background-color: blue;
+                width: 100%;
+                margin-left: 10px;
+            }
+
+            &:nth-child(3) {
+                grid-column: 2 / 3;
+                grid-row: 2 / 3;
+                // background-color: yellow;
+                margin-top: -25px;
+                margin-left: 10px;
+            }
+
+            &:nth-child(4) {
+                grid-column: 3 / 3;
+                // background-color: orange;
+            }
+        }
+    }
+
+    .p-fileupload .p-fileupload-row>div {
+        padding: 0;
+    }
+
+    .p-fileupload-row {
+        padding: 15px;
+        border: 1px solid #E6E6E9;
+        border-radius: 8px;
+        align-items: flex-start;
+    }
+
+    .timepicker {
+        width: 360px !important;
+    }
+
+    .timepicker-dial__container {
+        justify-content: center !important;
+    }
+
+    .timepicker-dial__hint {
+        display: none !important;
+    }
+
+    ngx-material-timepicker-dial-control {
+        text-align: center;
+        padding: 0;
+
+        input {
+            color: #2F3344 !important;
+            text-align: center !important;
+            background: #E6E6E9 !important;
+            width: 100px !important;
+            padding: 15px !important;
+            height: 90px;
+            border-radius: 8px !important;
+            text-align: center !important;
+
+            &.timepicker-dial__item_active {
+                background-color: #FEE9F3 !important;
+                color: #F72585 !important;
+            }
+        }
+    }
+
+    .timepicker-period {
+        border: 1px solid #E6E6E9;
+        background-color: #ffffff;
+        border-radius: 8px;
+
+        .timepicker-dial__item {
+            padding: 10px !important;
+            color: #6D707D !important;
+
+            &.timepicker-dial__item_active {
+                background-color: #FEE9F3 !important;
+                color: #F72585 !important;
+            }
+        }
+    }
+
+    .clock-face__number>span {
+        width: 58px !important;
+        height: 58px !important;
+        font-size: 18px !important;
+
+        &.active {
+            background: #F72585 !important;
+        }
+    }
+
+    .clock-face__clock-hand {
+        background: #F72585 !important;
+
+        &::after {
+            background: #F72585 !important;
+        }
+    }
+
+    .clock-face__clock-hand_minute {
+        &::before {
+            background: #F72585 !important;
+            border-color: #F72585 !important;
+        }
+    }
+
+    .timepicker__actions {
+        gap: 10px !important;
+        justify-content: center !important;
+        border-top: 1px solid #E2E5ED;
+
+        .timepicker-button {
+            min-width: auto !important;
+            border-radius: 8px !important;
+            border: 1px solid #F72585 !important;
+            background: #F72585 !important;
+            color: #fff !important;
+            height: auto !important;
+            padding: 8px 14px !important;
+            line-height: 20px !important;
+
+            span {
+                text-transform: capitalize !important;
+                padding: 0 !important;
+            }
+        }
+    }
+
+    .timepicker__header {
+        background: #ffffff !important;
+    }
+
+    .timepicker-dial__time {
+        span {
+            color: #2F3344 !important;
+            margin: 0 10px !important;
+        }
+    }
+
+    .timepicker-dial__period {
+        margin-left: 24px !important;
+    }
+}
+
+.file-upload--wrapper {
+    padding: 15px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+
+    .card-file-upload {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .file-upload--wrapper .p-progressbar-value {
+        height: 12px;
+    }
+}
+
+.full-width {
+    width: 100%;
+}
+
+.date-time-picker {
+    display: flex;
+}
+
+::ng-deep {
+    // img {
+    //     object-fit: cover;
+    // }
+
+    .post-image-caption {
+        .p-element {
+            // margin-top: 25px;
+            // width: 100% !important;
+            border-top-left-radius: 0;
+            border-top-right-radius: 0;
+        }
+    }
+
+    .p-tag.p-tag-success {
+        background-color: #F1E6F8;
+        color: #7209B7;
+        font-weight: 500;
+        font-size: 14px;
+        border-color: #7209B7;
+        border-radius: 40px;
+        border: 1px solid #7209B7;
+        padding: 8px 16px 8px 16px;
+    }
+
+    .btn-caption {
+        background-color: #2F6A62;
+        border-color: #2F6A62;
+        padding: 10px;
+
+        .p-button-label {
+            padding: 5px;
+            font-weight: 500;
+            font-size: 14px;
+            font-weight: 600;
+            font-family: 'Inter var';
+        }
+    }
+}
+
+a {
+    font-size: 14px;
+}
+
+video,
+img {
+    height: 100%;
+    object-fit: cover;
+}
+
+.caption {
+    padding-top: 0 !important;
+}
+
+.post-image {
+    height: 506px;
+    position: relative;
+    // height: 70% !important;
+    // width: 70% !important;
+    // text-align: center;
+    /* display: contents; */
+    // margin-left: auto;
+    // margin-right: auto;
+    img {
+        border-radius: 8px;
+    }
+
+    i {
+        position: absolute;
+        right: 12px;
+        top: 12px;
+        color: #333;
+    }
+
+}
+
+::ng-deep {
+    .pdf-card-warpper {
+        height: 100%;
+
+        p-card {
+            height: 100%;
+            display: block;
+
+            .p-card {
+                height: 100%;
+            }
+        }
+    }
+}
+
+.inisde-wrapper {
+    height: 200px;
+    overflow: auto;
+}
+
+::ng-deep {
+    swiper-container {
+
+        .swiper-button-next,
+        .swiper-button-prev {
+            background-color: white;
+            padding: 8px 16px;
+            border-radius: 100%;
+            border: 2px solid black;
+            color: red;
+        }
+
+        .swiper-pagination-bullet {
+            width: 40px;
+            height: 40px;
+            background-color: red;
+        }
+    }
+}
+
+.loading-background {
+    background-color: #f0f0f0;
+    opacity: 0.7;
+    position: relative;
+}
+
+.loading-background::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.6);
+    z-index: 1;
+}
+
+.disabled {
+    pointer-events: none;
+    opacity: 0.6;
+}
+
+.sybil-info-label {
+    position: relative;
+    z-index: 2;
+}
+
+.typing-indicator {
+    display: flex;
+    justify-content: space-between;
+    width: 20px;
+    height: 10px;
+    text-align: center;
+    justify-content: center;
+    margin-left: 175px;
+}
+
+.typing-indicator span {
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    background-color: #101828;
+    border-radius: 50%;
+    animation: bounce 1s infinite ease-in-out;
+}
+
+.typing-indicator span:nth-child(1) {
+    animation-delay: 0s;
+}
+
+.typing-indicator span:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.typing-indicator span:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+@keyframes bounce {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-5px);
+    }
+}
